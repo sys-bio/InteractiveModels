@@ -1,0 +1,75 @@
+<html>
+<!--  Template for calling Simulator with model -->
+<!--  Place in webpage where appropriate        -->
+
+<script type="text/javascript">
+ async function runModelName(newFrame) { // Replace 'runModelName' with 'runYourModelName'
+// ******************************************
+// **** Simulation info to fill out: ********
+  const modelURL = 'https://sys-bio.github.io/miniSidewinder/sysbiomodels/models/modelFileName.xml'; // Location of sbml model file on libreTexts
+  const newRT = '10';       // Length of run in model time units
+  const newSS = '0.10';     // integrator step size, total pts = newRt/newSS, 100 points: (10/0.10)
+  const staticRun = 'true'; // Display after all calculations are done.
+  const parSliders = 'k1, p_3, comp1';// Parameter sliders, exact id match, '' for first up to 12 params of model.
+  const spPlot = 'S1, deS2, Oxy2';    // Species to plot, exact id match, '' for first up to 8 species.
+  const yLabel = 'conc (uM)'; // Plot label, displayed at bottom as: yLabel vs. xLabel
+  const xLabel = 'sec';
+// *** END of Simulation info to fill out ***
+// ******************************************
+
+// Simulator location (adjust as needed):
+   const simURL = "https://sys-bio.github.io/miniSidewinder/sysbiomodels/sysbioLoadSim.html";
+// ******************************************
+// ******************************************
+   const btnName = 'btn' + newFrame;
+   document.getElementById(btnName).disabled = true;
+   let frames = window.frames;
+   var frameErr = true; 
+   for( let i =0; i<window.length; i++) {
+    try {
+      if (window[i].frameElement.id == newFrame) {
+	    let win = window[i];
+        frameErr = false;
+	    const m_Params_json = { m_iframeID: newFrame, m_URL: modelURL, m_RT: newRT, m_SS: newSS, m_static: staticRun, m_species: spPlot, m_pars: parSliders, m_yLabel: yLabel, m_xLabel: xLabel };
+	    const mdata = JSON.stringify(m_Params_json);
+        try {
+	      document.getElementById(newFrame).src = simURL; // Sim page to put in iFrame.
+		  }
+		 catch(err) {
+		   let errMsg = 'newFrame: ' + newFrame + ', does not match iframe id! ' + err;
+           alert(errMsg);
+		 }
+		await (async function() { // Give time to load json before sending info to simulator. 
+			n = 1000;
+			//console.log(' ++ delay()');
+			return new Promise(done => {
+			setTimeout(() => {
+				done();
+				}, n);
+			});
+		})();
+	    win.postMessage(mdata, "*");// Send info to simulator.
+	  }
+	}
+	catch(err) {
+	 console.log('windowframes mismatch error: ', err);
+	}
+   }
+  if(frameErr){ // Check if id bad
+    let errMsg = 'iframe name: ' + newFrame + ', id mismatch! ';
+    alert(errMsg); }
+  return;
+ } 
+ </script>
+ 
+<!-- *************************************************************************************************************** -->
+<!-- HTML code below: 'button' to launch simulator, 'section' to label it interactive, and 'iframe' to hold simulator page -->
+<!-- Replace all 'ModelName' labels with yourModelName (no spaces).  -->
+
+<p><input id="btnModelName" onclick="runModelName('ModelName');" type="button" value="Load Model Name" /></p>
+<p class="mt-align-center"><iframe align="middle" height="600px" id="ModelName" width="80%"></iframe></p>
+
+
+<!-- **** END of Simulator Template *** -->
+
+</html>

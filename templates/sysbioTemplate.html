@@ -1,0 +1,54 @@
+<html>
+<!--  Template for calling Simulator with model -->
+<!--  Place in webpage where appropriate        -->
+
+<script type="text/javascript">
+ async function runModelName(newFrame) { // Replace 'runModelName' with 'runYourModelName'
+// ******************************************
+// **** Simulation info to fill out: ********
+  const modelURL = 'https://sys-bio.github.io/miniSidewinder/sysbiomodels/models/modelFileName.xml'; // Location of sbml model file on libreTexts
+  const newRT = '10';       // Length of run in model time units
+  const newSS = '0.10';     // integrator step size, total pts = newRt/newSS, 100 points: (10/0.10)
+  const staticRun = 'true'; // Display after all calculations are done.
+  const parSliders = 'k1, p_3, comp1';// Parameter sliders, exact id match, '' for first up to 12 params of model.
+  const spPlot = 'S1, deS2, Oxy2';    // Species to plot, exact id match, '' for first up to 8 species.
+  const yLabel = 'conc (uM)'; // Plot label, displayed at bottom as: yLabel vs. xLabel
+  const xLabel = 'sec';
+// *** END of Simulation info to fill out ***
+// ******************************************
+//
+// Simulator location (adjust as needed):
+   const simURL = "https://sys-bio.github.io/miniSidewinder/sysbiomodels/sysbioLoadSim.html";
+// ******************************************
+   const btnName = 'btn' + newFrame;
+   document.getElementById(btnName).disabled = true;
+   try {
+      para = new URLSearchParams();
+	  para.append('m_URL', modelURL);
+	  para.append('m_RT', newRT);
+	  para.append('m_SS', newSS);
+	  para.append('m_static', staticRun);
+	  para.append('m_species', spPlot);
+	  para.append('m_pars', parSliders);
+	  para.append('m_yLabel', yLabel);
+	  para.append('m_xLabel', xLabel);
+	  // Note: URL + Param search string char limit ~ 2k
+      try { document.getElementById(newFrame).src = simURL + '?' + para.toString(); } // Sim page to put in iFrame.
+	  catch(err) { let errMsg = 'newFrame: ' + newFrame + ', does not match iframe id! ' + err; alert(errMsg); }
+	}
+	catch(err) { console.log('Issue setting simulation parameters: ', err); }
+  return;
+ } 
+ </script>
+ 
+<!-- *************************************************************************************************************** -->
+<!-- HTML code below: 'button' to launch simulator, 'section' to label it interactive, and 'iframe' to hold simulator page -->
+<!-- Replace all 'ModelName' labels with yourModelName (no spaces).  -->
+<p><input id="btnModelName" onclick="runModelName('ModelName');" type="button" value="Load Model" style="color: white; background-color:#008CBA; border:0px; font-size:16px; border-radius: 4px; padding:10px" /></p>
+<div style="text-align:center;"> 
+<p><iframe align="middle" height="90%" id="ModelName" width="90%" style="border:0px; sandbox="allow-downloads allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe></p>
+</div>
+
+<!-- **** END of Simulator Template *** -->
+
+</html>

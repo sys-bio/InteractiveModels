@@ -14,7 +14,7 @@
     <listOfParameters>
       <parameter id="kf" value="0.1" constant="true"/>
       <parameter id="kb" value="0.01" constant="true"/>
-      <parameter id="Vmax" value="1" constant="true"/>
+      <parameter id="Vmax" value="0.2" constant="true"/>
       <parameter id="Km" value="0.1" constant="true"/>
     </listOfParameters>
     <listOfReactions>

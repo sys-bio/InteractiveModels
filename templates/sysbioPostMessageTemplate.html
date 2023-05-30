@@ -1,5 +1,6 @@
 <html>
 <!--  Template for calling Simulator with model -->
+<!--  Make use of Window.postMessage to pass in entire model as text string -->
 <!--  Place in webpage where appropriate        -->
 
 <script type="text/javascript">
@@ -10,7 +11,7 @@
   const newRT = '10';       // Length of run in model time units
   const newSS = '0.10';     // integrator step size, total pts = newRt/newSS, 100 points: (10/0.10)
   const staticRun = 'true'; // Display after all calculations are done.
-  const parSliders = 'k1, p_3, comp1';// Parameter sliders, exact id match, '' for first up to 12 params of model.
+  const sliders = 'k1, p_3, comp1,S2';// Sliders, exact id match, '' for first 8 params and first 4 species of model.
   const spPlot = 'S1, deS2, Oxy2';    // Species to plot, exact id match, '' for first up to 8 species.
   const yLabel = 'conc (uM)'; // Plot label, displayed at bottom as: yLabel vs. xLabel
   const xLabel = 'sec';
@@ -18,7 +19,7 @@
 // ******************************************
 
 // Simulator location (adjust as needed):
-   const simURL = "https://sys-bio.github.io/miniSidewinder/sysbiomodels/sysbioLoadSim.html";
+   const simURL = "https://sys-bio.github.io/InteractiveModels/sysbioLoadSim.html";
 // ******************************************
 // ******************************************
    const btnName = 'btn' + newFrame;
@@ -30,7 +31,7 @@
       if (window[i].frameElement.id == newFrame) {
 	    let win = window[i];
         frameErr = false;
-	    const m_Params_json = { m_iframeID: newFrame, m_URL: modelURL, m_RT: newRT, m_SS: newSS, m_static: staticRun, m_species: spPlot, m_pars: parSliders, m_yLabel: yLabel, m_xLabel: xLabel };
+	    const m_Params_json = { m_iframeID: newFrame, m_URL: modelURL, m_RT: newRT, m_SS: newSS, m_static: staticRun, m_species: spPlot, m_pars: sliders, m_yLabel: yLabel, m_xLabel: xLabel };
 	    const mdata = JSON.stringify(m_Params_json);
         try {
 	      document.getElementById(newFrame).src = simURL; // Sim page to put in iFrame.

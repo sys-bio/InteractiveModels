@@ -40,15 +40,6 @@
       <parameter id="J8_J8_k2" value="375" constant="true"/>
       <parameter id="J9_J9_k" value="28" constant="true"/>
       <parameter id="J10_J10_k" value="80" constant="true"/>
-      <parameter id="J2_k" value="9.8" constant="true"/>
-      <parameter id="J3_k" value="85.7" constant="true"/>
-      <parameter id="J5_k" value="80" constant="true"/>
-      <parameter id="J6_k" value="9.7" constant="true"/>
-      <parameter id="J7_k" value="2000" constant="true"/>
-      <parameter id="J8_k1" value="375" constant="true"/>
-      <parameter id="J8_k2" value="375" constant="true"/>
-      <parameter id="J9_k" value="28" constant="true"/>
-      <parameter id="J10_k" value="80" constant="true"/>
     </listOfParameters>
     <listOfReactions>
       <reaction id="J0" reversible="true" fast="false">

@@ -7,7 +7,7 @@ Models and simulator for Interactive modeling site: https://sites.google.com/vie
 3. Embeded the template code into the page:
 * Template is in ../templates/sysbioTemplate.html.
 * Fill out the following part of the template with model simulation details:
-  `// **** Simulation info to fill out: ********
+ - `// **** Simulation info to fill out: ********
   const modelURL = 'https://sys-bio.github.io/InteractiveModels/models/modelFileName.xml'; // Location of sbml model file on github.
   const newRT = '10';       // Length of run in model time units
   const newSS = '0.10';     // integrator step size, total pts = newRt/newSS, 100 points: (10/0.10)

@@ -10,8 +10,8 @@
   const newRT = '10';       // Length of run in model time units
   const newSS = '0.10';     // integrator step size, total pts = newRt/newSS, 100 points: (10/0.10)
   const staticRun = 'true'; // Display after all calculations are done.
-  const parSliders = 'k1, p_3, comp1';// Sliders, exact id match, '' for first 8 params and first 4 species of model.
-  const spPlot = 'S1, deS2, Oxy2';    // Species to plot, exact id match, '' for first up to 8 species.
+  const sliders = 'k1, p_3, comp1';// Sliders 12 max, exact id match, '' for first 8 params and first 4 species of model.
+  const spPlot = 'S1, deS2, Oxy2'; // Species to plot, exact id match, '' for first up to 8 species.
   const yLabel = 'conc (uM)'; // Plot label, displayed at bottom as: yLabel vs. xLabel
   const xLabel = 'sec';
 // *** END of Simulation info to fill out ***
@@ -29,7 +29,7 @@
 	  para.append('m_SS', newSS);
 	  para.append('m_static', staticRun);
 	  para.append('m_species', spPlot);
-	  para.append('m_pars', parSliders);
+	  para.append('m_pars', sliders);
 	  para.append('m_yLabel', yLabel);
 	  para.append('m_xLabel', xLabel);
 	  // Note: URL + Param search string char limit ~ 2k

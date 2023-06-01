@@ -1,7 +1,7 @@
 # InteractiveModels
 Models and simulator for Interactive modeling site: https://sites.google.com/view/interactive-modeling/home 
 
-## Adding a model to an Interactive Models webpage (on Google Sites)
+## Adding a model to the Interactive Modeling webpage (on Google Sites)
 1. Add the SBML model to the ../models/ dir
 2. Go to the Google sites page where you want the simulation to run.
 3. Embeded the template code into the page:

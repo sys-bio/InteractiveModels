@@ -1,2 +1,2 @@
 Simulator in use from:
-MiniSidewinder: https://github.com/sys-bio/miniSidewinder 
+MiniSidewinder 0.9.4: https://github.com/sys-bio/miniSidewinder 

@@ -115,11 +115,11 @@ getRules(tModela, tRule) {
          if (rule.isParameter()) {
            tRule.setParameter(true);
          }
-         else {tRule.setParameter(false); }
-         if(rule.isSpeciesConcentration()) {
+        // else {tRule.setParameter(false); }
+         else if(rule.isSpeciesConcentration()) {
            tRule.setSpeciesConcentration(true);
          }
-         else {tRule.setSpeciesConcentration(false);}
+           else {tRule.setSpeciesConcentration(false);}
          if (rule.isSetVariable) {
            tRule.setVariable(rule.getVariable());
          }
@@ -148,6 +148,8 @@ getRules(tModela, tRule) {
         tSpecies.setCompartment(newSpecies.getCompartment()); }
       if (newSpecies.isSetBoundaryCondition()) {
         tSpecies.setBoundaryCondition(newSpecies.getBoundaryCondition());}
+      if (newSpecies.isSetConstant()) {
+        tSpecies.setConstant(newSpecies.getConstant()); }
       if (newSpecies.isSetName()) {
         tSpecies.setName(newSpecies.getName()); }
       if (newSpecies.isSetHasOnlySubstanceUnits()) {
@@ -240,7 +242,7 @@ getRules(tModela, tRule) {
     return tModela;
   }
 
-  getReactions(tModela){
+  getReactions(tModela){   // does not check if species stoich is constant or not
     var i;
     for( i=0; i< this.model.getNumReactions(); i++) {
       var numTotalSpecies;

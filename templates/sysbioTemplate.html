@@ -20,8 +20,6 @@
 // Simulator location (adjust as needed):
    const simURL = "https://sys-bio.github.io/InteractiveModels/sysbioLoadSim.html";
 // ******************************************
-   const btnName = 'btn' + newFrame;
-   document.getElementById(btnName).disabled = true;
    try {
       para = new URLSearchParams();
 	  para.append('m_URL', modelURL);
@@ -44,11 +42,10 @@
 <!-- *************************************************************************************************************** -->
 <!-- HTML code below: 'button' to launch simulator, 'section' to label it interactive, and 'iframe' to hold simulator page -->
 <!-- Replace all 'ModelName' labels with yourModelName (no spaces).  -->
-<p><input id="btnModelName" onclick="runModelName('ModelName');" type="button" value="Load Model" style="color: white; background-color:#008CBA; border:0px; font-size:16px; border-radius: 4px; padding:10px" /></p>
 <div style="text-align:center;"> 
 <p><iframe align="middle" height="90%" id="ModelName" width="90%" style="border:0px; sandbox="allow-downloads allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe></p>
 </div>
-
+<script type="text/javascript">runModelName('ModelName');</script>
 <!-- **** END of Simulator Template *** -->
 
 </html>
